@@ -1,0 +1,19 @@
+{
+  "name": "idxtiming",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Adjust timing of IDX files",
+  "main": "index.js",
+  "author": "Steve <steve@yarrumevets.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "prettier": "3.3.3"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

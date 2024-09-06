@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <style>
+    body,
+    form {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      display: flex;
+      flex-direction: column;
+      row-gap: 3px;
+      align-items: center;
+    }
+    label,
+    #submit {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    #submit {
+      width: 200px;
+      height: 50px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const fileInput = document.getElementById("file");
+        const offsetInput = document.getElementById("offset");
+        const file = fileInput.files[0];
+        fetch("/upload?offset=" + offsetInput.value, {
+          method: "POST",
+          body: file,
+        })
+          .then((response) => response.blob())
+          .then((blob) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "updated.idx";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+    });
+  </script>
+  <body>
+    <h1>idx Timing Adjuster</h1>
+    <form>
+      <label for="file">IDX File </label>
+      <input type="file" name="file" id="file" />
+      <label for="offset">Offset (ms)</label>
+      <input type="text" id="offset" name="offset" value="0" />
+      <input type="submit" id="submit" value="Upload" />
+    </form>
+  </body>
+</html>
