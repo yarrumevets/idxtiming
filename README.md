@@ -32,7 +32,10 @@ node server.js
 
 Go to `http://localhost:3838` in your browser.
 
-Upload an idx file along with an offset (in miliseconds), and receive back a new idx file with the adjusted subtitle timings.
+- Choose an idx file.
+- Provide an offset (in miliseconds).
+- Upload.
+- A converted file will download automatically.
 
 ## License
 
