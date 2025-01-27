@@ -93,8 +93,6 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
-// Learning reference:
-
 // Return a text file.
 app.get("/textfiletest", (req, res) => {
   res.setHeader("Content-Disposition", 'attachment; filename="textfile.txt"');
